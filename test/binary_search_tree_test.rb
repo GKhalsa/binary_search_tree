@@ -82,4 +82,31 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal nil, tree.head.right_link.left_link
   end
 
+  def test_adding_a_node_returns_a_depth
+    tree = BinarySearchTree.new
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 1, tree.insert(16, "Johnny English")
+  end
+
+  def test_adding_4_nodes_returns_correct_depth
+    tree = BinarySearchTree.new
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 1, tree.insert(65, "Johnny English")
+    assert_equal 2, tree.insert(68, "Shorter Movie")
+    assert_equal 3, tree.insert(70, "Turing")
+  end
+  def test_does_the_tree_include_a_head_score
+    tree = BinarySearchTree.new
+    tree.insert(16, "Gattaca")
+    assert_equal true, tree.include?(16)
+  end
+
+  meta single: true
+  def test_does_the_tree_include_a_child_score
+    tree = BinarySearchTree.new
+    tree.insert(16, "Gattaca")
+    tree.insert(40, "Saw")
+    # assert_equal true, tree.include?(16)
+    assert_equal true, tree.include?(40)
+  end
 end
