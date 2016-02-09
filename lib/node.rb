@@ -10,9 +10,10 @@ class Node
   #recursive method to bring nodes down the tree
   def tree_insertion(node)
     if left_link.nil? && score > node.score
-      left_link = node
+      @left_link = node
+      # binding.pry
     elsif right_link.nil? && score < node.score
-      right_link = node
+      @right_link = node
     end
   end
 end

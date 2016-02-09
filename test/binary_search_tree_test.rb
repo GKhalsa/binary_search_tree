@@ -24,10 +24,17 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal Node, tree.head.class
   end
 
-  def test_binary_search_tree_can_insert_second_node_as_left_node
+  def test_binary_search_tree_can_insert_second_node_as_left_child
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(51, "Gataca")
+    assert_equal 51, tree.head.left_link.score
   end
 
+  def test_bst_can_insert_second_node_as_right_child
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(71, "Gataca")
+    assert_equal 71, tree.head.right_link.score
+  end
 end
