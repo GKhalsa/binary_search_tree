@@ -15,6 +15,14 @@ class NodeTest < Minitest::Test
     assert_equal 6, node.score
   end
 
+  def test_node_is_initialized_with_nil_values
+    node = Node.new
+    assert_equal nil, node.score
+    assert_equal nil, node.movie
+    assert_equal nil, node.left_link
+    assert_equal nil, node.right_link
+  end
+
   def test_node_can_hold_movie
     node = Node.new(6,"The Matrix")
     assert_equal "The Matrix", node.movie
