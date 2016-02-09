@@ -10,9 +10,9 @@ class NodeTest < Minitest::Test
     assert_equal Node, node.class
   end
 
-  def test_node_can_hold_num
+  def test_node_can_hold_score
     node = Node.new(6)
-    assert_equal 6, node.num
+    assert_equal 6, node.score
   end
 
   def test_node_can_hold_movie
@@ -40,12 +40,12 @@ class NodeTest < Minitest::Test
     assert_equal node3, node.right_link
   end
 
-  def test_node_carries_over_num
+  def test_node_carries_over_score
     node = Node.new(6, "The Matrix")
     node2 = Node.new(5, "Kontroll")
 
     node.left_link = node2
-    assert_equal 5, node.left_link.num
+    assert_equal 5, node.left_link.score
   end
 
   def test_node_carries_over_movie
