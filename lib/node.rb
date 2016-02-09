@@ -6,4 +6,13 @@ class Node
     @left_link = left_link
     @right_link = right_link
   end
+
+  #recursive method to bring nodes down the tree
+  def tree_insertion(node)
+    if left_link.nil? && score > node.score
+      left_link = node
+    elsif right_link.nil? && score < node.score
+      right_link = node
+    end
+  end
 end
