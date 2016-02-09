@@ -11,9 +11,14 @@ class Node
   def tree_insertion(node)
     if left_link.nil? && score > node.score
       @left_link = node
-      # binding.pry
     elsif right_link.nil? && score < node.score
       @right_link = node
+    elsif score > node.score
+      @left_link.tree_insertion(node)
+    elsif score < node.score
+      @right_link.tree_insertion(node)
+    else
+      "You have added a duplicate score"
     end
   end
 end
