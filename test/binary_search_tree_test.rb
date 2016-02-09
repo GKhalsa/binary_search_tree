@@ -71,4 +71,15 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 68, tree.head.right_link.left_link.score
   end
 
+  def test_you_cannot_add_duplicate_score
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(70, "Gataca")
+    tree.insert(70, "The Fountain")
+    tree.insert(70, "The Matrix")
+    assert_equal "Gataca", tree.head.right_link.movie
+    assert_equal nil, tree.head.right_link.right_link
+    assert_equal nil, tree.head.right_link.left_link
+  end
+
 end

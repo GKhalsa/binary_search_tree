@@ -17,8 +17,6 @@ class Node
       @left_link.tree_insertion(node)
     elsif score < node.score
       @right_link.tree_insertion(node)
-    else
-      "You have added a duplicate score"
     end
   end
 end
