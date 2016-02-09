@@ -106,7 +106,18 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
     tree.insert(40, "Saw")
-    # assert_equal true, tree.include?(16)
+    assert_equal true, tree.include?(16)
     assert_equal true, tree.include?(40)
+  end
+
+  def test_returns_false_if_score_is_not_there
+    tree = BinarySearchTree.new
+    tree.insert(16, "Gattaca")
+    tree.insert(39, "Saw")
+    tree.insert(50, "The Matrix")
+    tree.insert(40, "Big Fish")
+    assert_equal true, tree.include?(16)
+    assert_equal true, tree.include?(40)
+    assert_equal false, tree.include?(20)
   end
 end
