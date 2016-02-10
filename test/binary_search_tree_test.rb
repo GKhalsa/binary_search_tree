@@ -112,7 +112,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal true, tree.include?(17)
     assert_equal true, tree.include?(40)
   end
-  meta single: true
+
   def test_returns_false_if_score_is_not_there
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
@@ -126,8 +126,8 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal false, tree.include?(20)
   end
   #
+  meta single: true
   def test_returns_depth_of_node
-    skip
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
     tree.insert(39, "Saw")
@@ -135,20 +135,33 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(40, "Big Fish")
     assert_equal 0, tree.depth_of(16)
   end
-  #
-  # def test_returns_depth_of_node
-  #   skip
-  #   tree = BinarySearchTree.new
-  #   tree.insert(16, "Gattaca")
-  #   tree.insert(15, "Gattaca")
-  #   tree.insert(39, "Saw")
-  #   tree.insert(50, "The Matrix")
-  #   tree.insert(40, "Big Fish")
-  #   assert_equal 0, tree.depth_of(16)
-  #
-  #   assert_equal 1, tree.depth_of(15)
-  #   # assert_equal 1, tree.depth_of(39)
-  #   # assert_equal 2, tree.depth_of(50)
-  #   # assert_equal 3, tree.depth_of(40)
-  # end
+
+  def test_returns_depth_of_node
+    tree = BinarySearchTree.new
+    tree.insert(16, "Gattaca")
+    tree.insert(15, "Gattaca")
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+    tree.insert(50, "The Matrix")
+    tree.insert(40, "Big Fish")
+
+    assert_equal 0, tree.depth_of(16)
+    assert_equal 2, tree.depth_of(20)
+    assert_equal 1, tree.depth_of(15)
+    assert_equal 1, tree.depth_of(39)
+    assert_equal 2, tree.depth_of(50)
+    assert_equal 3, tree.depth_of(40)
+  end
+
+  def test_does_not_give_nonexistant_value
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+    tree.insert(50, "The Matrix")
+
+    assert_equal 0, tree.depth_of(39)
+    assert_equal 1, tree.depth_of(20)
+    assert_equal 1, tree.depth_of(50)
+    assert_equal nil, tree.depth_of(60)
+  end
 end

@@ -23,11 +23,7 @@ class BinarySearchTree
   end
 
   def depth_of(score)
-    if include?(score)
-      head.depth
-    else
-      nil
-    end
+    head.nil? ? false : head.depth_of(score)
   end
 
 

@@ -40,5 +40,20 @@ class Node
     end
   end
 
+  def depth_of(score)
+    if @score == score
+      depth
+    elsif right_link.nil? && left_link.nil?
+      nil
+    elsif @score < score
+      right_link.depth_of(score)
+    elsif @score > score
+      left_link.depth_of(score)
+    else
+      nil
+    end
+  end
+
+
 
 end
