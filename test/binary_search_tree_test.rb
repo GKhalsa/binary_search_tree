@@ -170,7 +170,7 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(39, "Saw")
     tree.insert(20, "XmenApocalypse")
 
-    assert_equal 39, tree.max
+    assert_equal({"Saw"=>39}, tree.max)
   end
 
   def test_for_max_score_with_other_nodes
@@ -182,7 +182,7 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(75, "happy gilmore")
     tree.insert(90, "turing")
 
-    assert_equal 90, tree.max
+    assert_equal({"turing"=>90}, tree.max)
   end
 
   def test_for_min_score
@@ -190,7 +190,7 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(39, "Saw")
     tree.insert(20, "XmenApocalypse")
 
-    assert_equal 20, tree.min
+    assert_equal({"XmenApocalypse"=>20}, tree.min)
   end
 
   def test_for_ultimate_min
@@ -202,6 +202,6 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(6, "happy gilmore")
     tree.insert(3, "turing")
 
-    assert_equal 3, tree.min
+    assert_equal({"turing"=>3}, tree.min)
   end
 end

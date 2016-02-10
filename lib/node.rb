@@ -55,16 +55,20 @@ class Node
   end
 
   def max_score
+    max_movie_hash = {}
     if right_link == nil
-      score
+      max_movie_hash[movie] = score
+      max_movie_hash
     else
       right_link.max_score
     end
   end
 
   def min_score
+    min_movie_hash = {}
     if left_link == nil
-      score
+      min_movie_hash[movie] = score
+      min_movie_hash
     else
       left_link.min_score
     end

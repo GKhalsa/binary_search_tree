@@ -34,5 +34,7 @@ class BinarySearchTree
     head.nil? ? nil : head.min_score
   end
 
+  
+
 
 end
