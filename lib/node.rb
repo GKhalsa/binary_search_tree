@@ -25,4 +25,20 @@ class Node
     end
     node.depth
   end
+
+  def inclusion(score)
+    if @score == score
+      true
+    elsif right_link == nil && left_link == nil
+      false
+    elsif @score < score
+      right_link.inclusion(score)
+    elsif @score > score
+      left_link.inclusion(score)
+    else
+      false
+    end
+  end
+
+
 end

@@ -106,18 +106,49 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
     tree.insert(40, "Saw")
+    tree.insert(17, "Hello,World The Movie")
     assert_equal true, tree.include?(16)
+
+    assert_equal true, tree.include?(17)
     assert_equal true, tree.include?(40)
   end
-
+  meta single: true
   def test_returns_false_if_score_is_not_there
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
     tree.insert(39, "Saw")
     tree.insert(50, "The Matrix")
     tree.insert(40, "Big Fish")
+    tree.insert(17, "Hello,World The Movie")
     assert_equal true, tree.include?(16)
     assert_equal true, tree.include?(40)
+    assert_equal true, tree.include?(17)
     assert_equal false, tree.include?(20)
   end
+  #
+  def test_returns_depth_of_node
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(16, "Gattaca")
+    tree.insert(39, "Saw")
+    tree.insert(50, "The Matrix")
+    tree.insert(40, "Big Fish")
+    assert_equal 0, tree.depth_of(16)
+  end
+  #
+  # def test_returns_depth_of_node
+  #   skip
+  #   tree = BinarySearchTree.new
+  #   tree.insert(16, "Gattaca")
+  #   tree.insert(15, "Gattaca")
+  #   tree.insert(39, "Saw")
+  #   tree.insert(50, "The Matrix")
+  #   tree.insert(40, "Big Fish")
+  #   assert_equal 0, tree.depth_of(16)
+  #
+  #   assert_equal 1, tree.depth_of(15)
+  #   # assert_equal 1, tree.depth_of(39)
+  #   # assert_equal 2, tree.depth_of(50)
+  #   # assert_equal 3, tree.depth_of(40)
+  # end
 end

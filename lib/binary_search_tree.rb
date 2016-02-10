@@ -2,10 +2,9 @@ require_relative 'node.rb'
 require 'pry'
 
 class BinarySearchTree
-  attr_accessor :node, :head, :depth
+  attr_accessor :node, :depth, :head
   def initialize
     @head = head
-    # @depth = 0
   end
 
   def insert(score, movie)
@@ -18,20 +17,19 @@ class BinarySearchTree
     end
   end
 
-  def include?(score)  #make a search method in a search g
-    if head.score == score
-      true
-    elsif head.left_link == nil && head.right_link == nil
-      false
-    elsif head.score < score
-      @head = head.right_link
-      include?(score)
-    elsif head.score > score
-      @head = head.left_link
-      include?(score)
+
+  def include?(score)
+    head.nil? ? false : head.inclusion(score)
+  end
+
+  def depth_of(score)
+    if include?(score)
+      head.depth
     else
-      false
+      nil
     end
   end
+
+
 
 end
