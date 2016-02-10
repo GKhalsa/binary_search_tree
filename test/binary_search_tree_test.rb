@@ -164,4 +164,44 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.depth_of(50)
     assert_equal nil, tree.depth_of(60)
   end
+
+  def test_for_max_score
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+
+    assert_equal 39, tree.max
+  end
+
+  def test_for_max_score_with_other_nodes
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+    tree.insert(60, "Hello, world the movie")
+    tree.insert(45, "wassup")
+    tree.insert(75, "happy gilmore")
+    tree.insert(90, "turing")
+
+    assert_equal 90, tree.max
+  end
+
+  def test_for_min_score
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+
+    assert_equal 20, tree.min
+  end
+
+  def test_for_ultimate_min
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+    tree.insert(20, "XmenApocalypse")
+    tree.insert(45, "wassup")
+    tree.insert(5, "The Matrix")
+    tree.insert(6, "happy gilmore")
+    tree.insert(3, "turing")
+
+    assert_equal 3, tree.min
+  end
 end

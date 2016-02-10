@@ -23,9 +23,16 @@ class BinarySearchTree
   end
 
   def depth_of(score)
-    head.nil? ? false : head.depth_of(score)
+    head.nil? ? nil : head.depth_search(score)
   end
 
+  def max
+    head.nil? ? nil : head.max_score
+  end
+
+  def min
+    head.nil? ? nil : head.min_score
+  end
 
 
 end

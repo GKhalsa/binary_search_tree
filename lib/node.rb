@@ -40,17 +40,33 @@ class Node
     end
   end
 
-  def depth_of(score)
+  def depth_search(score)
     if @score == score
       depth
     elsif right_link.nil? && left_link.nil?
       nil
     elsif @score < score
-      right_link.depth_of(score)
+      right_link.depth_search(score)
     elsif @score > score
-      left_link.depth_of(score)
+      left_link.depth_search(score)
     else
       nil
+    end
+  end
+
+  def max_score
+    if right_link == nil
+      score
+    else
+      right_link.max_score
+    end
+  end
+
+  def min_score
+    if left_link == nil
+      score
+    else
+      left_link.min_score
     end
   end
 
