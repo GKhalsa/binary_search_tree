@@ -103,6 +103,10 @@ class Node
     ((node.search.flatten.count.to_f/self.search.flatten.count) * 100).floor
   end
 
+  def input_movie_count(movie_count)
+    self.search.flatten.count - movie_count
+  end
+
   def search
     in_order = []
     in_order << left_link.search if left_link

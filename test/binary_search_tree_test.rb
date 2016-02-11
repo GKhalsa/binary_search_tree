@@ -255,7 +255,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.leaves
   end
 
-  meta single: true
   def test_for_two_leaves
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -277,13 +276,11 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 3, tree.leaves
   end
 
-
-
-
-  # def test_for_loading_a_single_movie
-  #   tree = BinarySearchTree.new
-  #   assert_equal 6, tree.load
-  # end
+  meta single: true
+  def test_for_loading_a_single_movie
+    tree = BinarySearchTree.new
+    assert_equal 6, tree.load("./lib/movies.txt")
+  end
 
 
 end

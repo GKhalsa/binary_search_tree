@@ -2,9 +2,11 @@ require_relative 'node.rb'
 require 'pry'
 
 class BinarySearchTree
+  attr_reader :movie_count
   attr_accessor :node, :depth, :head
   def initialize
     @head = head
+    @movie_count = 0
   end
 
   def insert(score, movie)
@@ -46,20 +48,31 @@ class BinarySearchTree
     head.nil? ? nil : head.leaves
   end
 
+  def count_verification(movie_count)
+    head.nil? ? nil : head.input_movie_count(movie_count)
+  end
 
-  # def load
-  #   counter = 0
-  #   File.open("./lib/movies.txt", "r") do |movie|
-  #     binding.pry
-  #     movie.each_line do |line|
-  #       splitted_line = line.chomp.delete(' ').split(',')
-  #       score = splitted_line[0].to_i
-  #       movie_string = splitted_line[1]
-  #       insert(score, movie_string)
-  #       counter += 1
-  #     end
-  #     counter
-  #   end
-  # end
+  def load(file)
+    movies = File.open(file, "r")
+    load_each_movie(movies)
+    count_verification(movie_count)
+  end
+
+  def load_each_movie(movies)
+    movies.each_line do |line|
+      splitted_line = line.chomp.split(',')
+      injection(splitted_line)
+      @movie_count += 1
+    end
+  end
+
+  def injection(splitted_line)
+    score = splitted_line[0].to_i
+    movie_string = splitted_line[1]
+    insert(score, movie_string)
+  end
+
+
+
 
 end
