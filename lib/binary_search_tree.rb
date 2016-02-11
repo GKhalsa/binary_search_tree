@@ -23,7 +23,7 @@ class BinarySearchTree
   end
 
   def depth_of(score)
-    head.nil? ? nil : head.depth_search(score)
+    head.nil? ? nil : head.depths(score)
   end
 
   def max
@@ -38,7 +38,9 @@ class BinarySearchTree
     head.nil? ? nil : head.sorter
   end
 
-  
+  def health(depth)
+    head.nil? ? nil : head.health(depth)
+  end
 
   # def load
   #   counter = 0

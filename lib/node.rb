@@ -8,7 +8,6 @@ class Node
     @depth = 0
   end
 
-  #recursive method to bring nodes down the tree
   def tree_insertion(node)
     if left_link.nil? && score > node.score
       node.depth += 1
@@ -40,15 +39,15 @@ class Node
     end
   end
 
-  def depth_search(score)
+  def depths(score)
     if @score == score
       depth
     elsif right_link.nil? && left_link.nil?
       nil
     elsif @score < score
-      right_link.depth_search(score)
+      right_link.depths(score)
     elsif @score > score
-      left_link.depth_search(score)
+      left_link.depths(score)
     else
       nil
     end
@@ -76,26 +75,42 @@ class Node
 
   def sorter
     in_order = []
-    if left_link
-      in_order << left_link.sorter
-    end
+    in_order << left_link.sorter if left_link
     in_order << {movie => score}
-    if right_link
-      in_order << right_link.sorter
-    end
+    in_order << right_link.sorter if right_link
     in_order.flatten
   end
-
-  # def sort
-  #   @sorted_tree = []
-  #   if @head.nil?
-  #     return nil
-  #   else
-  #     sort_tree(head)
+  # def sorter
+  #   in_order = []
+  #   if left_link
+  #     in_order << left_link.sorter
   #   end
-  #   return @sorted_tree
+  #   in_order << {movie => score}
+  #   if right_link
+  #     in_order << right_link.sorter
+  #   end
+  #   in_order.flatten
   # end
 
+  def health(depth)
+    find_nodes_at_certain_depth(depth).map { |node|   [node.score,node.search.flatten.count,floored_percentage(node)]}
+  end
 
+  def find_nodes_at_certain_depth(depth)
+    a = []
+    a << search
+    a.flatten.find_all { |node| node.depth == depth }
+  end
 
+  def floored_percentage(node)
+    ((node.search.flatten.count.to_f/self.search.flatten.count) * 100).floor
+  end
+
+  def search
+    in_order = []
+    in_order << left_link.search if left_link
+    in_order << self
+    in_order << right_link.search if right_link
+    in_order
+  end
 end

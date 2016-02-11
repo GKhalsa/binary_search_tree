@@ -210,7 +210,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal([{"Saw" => 39}], tree.sort)
   end
 
-  meta single: true
   def test_sorting_two_nodes
     tree = BinarySearchTree.new
     tree.insert(20, "Friday")
@@ -224,7 +223,34 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal [{"Goonies"=>1}, {"hello,world the movie"=>10}, {"Friday"=>20}, {"Kontroll"=>25}, {"Spice Girls Worldwide"=>56}, {"Independence Day"=>77}, {"Turing"=>108}], tree.sort
   end
 
-  def test_
+  def test_for_health_at_zero
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(20, "Friday")
+    tree.insert(25, "Kontroll")
+    tree.insert(56, "Spice Girls Worldwide")
+    tree.insert(10, "hello,world the movie")
+
+    assert_equal [[10, 1, 20], [25, 2, 40]], tree.health(2)
+    assert_equal [[98, 5, 100]], tree.health(0)
+    assert_equal [[20, 4, 80]], tree.health(1)
+  end
+
+  meta single: true
+  def test_for_health_by_spec
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(36, "Bill & Ted's Bogus Journey")
+    tree.insert(93, "Bill & Ted's Excellent Adventure")
+    tree.insert(86, "Charlie's Angels")
+    tree.insert(38, "Charlie's Country")
+    tree.insert(69, "Collateral Damage")
+
+    assert_equal [[98, 7, 100]], tree.health(0)
+    assert_equal [[58, 6, 85]], tree.health(1)
+    assert_equal [[36, 2, 28], [93, 3, 42]], tree.health(2)
+  end
 
 
 
