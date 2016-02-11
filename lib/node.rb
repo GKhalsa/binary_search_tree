@@ -1,5 +1,6 @@
 class Node
-  attr_accessor :score, :movie, :left_link, :right_link, :depth
+  attr_reader :score, :movie
+  attr_accessor :left_link, :right_link, :depth
   def initialize(score = nil, movie = nil)
     @score = score
     @movie = movie
@@ -103,8 +104,8 @@ class Node
     ((node.search.flatten.count.to_f/self.search.flatten.count) * 100).floor
   end
 
-  def input_movie_count(movie_count)
-    self.search.flatten.count - movie_count
+  def input_movie_count
+    self.search.flatten.count
   end
 
   def search
