@@ -101,7 +101,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal true, tree.include?(16)
   end
 
-  meta single: true
   def test_does_the_tree_include_a_child_score
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
@@ -126,7 +125,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal false, tree.include?(20)
   end
   #
-  meta single: true
   def test_returns_depth_of_node
     tree = BinarySearchTree.new
     tree.insert(16, "Gattaca")
@@ -204,4 +202,32 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal({"turing"=>3}, tree.min)
   end
+
+  def test_sort_one_node
+    tree = BinarySearchTree.new
+    tree.insert(39, "Saw")
+
+    assert_equal([{"Saw" => 39}], tree.sort)
+  end
+
+  meta single: true
+  def test_sorting_two_nodes
+    tree = BinarySearchTree.new
+    tree.insert(20, "XmenApocalypse")
+    tree.insert(25, "XmenApocalypse")
+    tree.insert(56, "XmenApocalypse")
+    tree.insert(10, "hello,world the movie")
+    tree.insert(108, "wassup")
+    tree.insert(1, "wassup")
+    tree.insert(77, "wassup")
+
+    assert_equal "", tree.sort
+  end
+
+  # def test_for_loading_a_single_movie
+  #   tree = BinarySearchTree.new
+  #   assert_equal 6, tree.load
+  # end
+
+
 end

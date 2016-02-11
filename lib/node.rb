@@ -66,13 +66,36 @@ class Node
 
   def min_score
     min_movie_hash = {}
-    if left_link == nil
+    if left_link == nil  #.nil?
       min_movie_hash[movie] = score
       min_movie_hash
     else
       left_link.min_score
     end
   end
+
+  def sorter
+    # binding.pry
+    in_order = []
+    if left_link
+      in_order << left_link.sorter
+    end
+    in_order << score
+    if right_link
+      in_order << right_link.sorter
+    end
+    in_order.flatten
+  end
+
+  # def sort
+  #   @sorted_tree = []
+  #   if @head.nil?
+  #     return nil
+  #   else
+  #     sort_tree(head)
+  #   end
+  #   return @sorted_tree
+  # end
 
 
 
