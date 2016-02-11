@@ -213,16 +213,21 @@ class BinarySearchTreeTest < Minitest::Test
   meta single: true
   def test_sorting_two_nodes
     tree = BinarySearchTree.new
-    tree.insert(20, "XmenApocalypse")
-    tree.insert(25, "XmenApocalypse")
-    tree.insert(56, "XmenApocalypse")
+    tree.insert(20, "Friday")
+    tree.insert(25, "Kontroll")
+    tree.insert(56, "Spice Girls Worldwide")
     tree.insert(10, "hello,world the movie")
-    tree.insert(108, "wassup")
-    tree.insert(1, "wassup")
-    tree.insert(77, "wassup")
+    tree.insert(108, "Turing")
+    tree.insert(1, "Goonies")
+    tree.insert(77, "Independence Day")
 
-    assert_equal "", tree.sort
+    assert_equal [{"Goonies"=>1}, {"hello,world the movie"=>10}, {"Friday"=>20}, {"Kontroll"=>25}, {"Spice Girls Worldwide"=>56}, {"Independence Day"=>77}, {"Turing"=>108}], tree.sort
   end
+
+  def test_
+
+
+
 
   # def test_for_loading_a_single_movie
   #   tree = BinarySearchTree.new

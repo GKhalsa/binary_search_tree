@@ -75,12 +75,11 @@ class Node
   end
 
   def sorter
-    # binding.pry
     in_order = []
     if left_link
       in_order << left_link.sorter
     end
-    in_order << score
+    in_order << {movie => score}
     if right_link
       in_order << right_link.sorter
     end
