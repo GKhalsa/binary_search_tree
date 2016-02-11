@@ -42,6 +42,11 @@ class BinarySearchTree
     head.nil? ? nil : head.health(depth)
   end
 
+  def leaves
+    head.nil? ? nil : head.leaves
+  end
+
+
   # def load
   #   counter = 0
   #   File.open("./lib/movies.txt", "r") do |movie|
@@ -50,15 +55,8 @@ class BinarySearchTree
   #       splitted_line = line.chomp.delete(' ').split(',')
   #       score = splitted_line[0].to_i
   #       movie_string = splitted_line[1]
-  #       # Unless splitted_line[0] is included in tree, counter += 1
-  #       # unless self.include?(score) == true
-  #       # unless self.include?(score)
-  #         insert(score, movie_string)
-  #         #  counter += 1
-  #       #  end
-  #         #  counter += 1 unless include?(score) == false
-  #           # insert(score, movie_string)
-  #       #  end
+  #       insert(score, movie_string)
+  #       counter += 1
   #     end
   #     counter
   #   end

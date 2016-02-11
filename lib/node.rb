@@ -80,17 +80,14 @@ class Node
     in_order << right_link.sorter if right_link
     in_order.flatten
   end
-  # def sorter
-  #   in_order = []
-  #   if left_link
-  #     in_order << left_link.sorter
-  #   end
-  #   in_order << {movie => score}
-  #   if right_link
-  #     in_order << right_link.sorter
-  #   end
-  #   in_order.flatten
-  # end
+
+  def leaves
+    leafy = []
+    leafy << left_link.leaves if left_link
+    leafy << right_link.leaves if right_link
+    leafy << 1 if right_link.nil? && left_link.nil?
+    leafy.flatten.reduce(:+)
+  end
 
   def health(depth)
     find_nodes_at_certain_depth(depth).map { |node|   [node.score,node.search.flatten.count,floored_percentage(node)]}

@@ -3,10 +3,6 @@ require 'minitest/pride'
 require_relative '../lib/binary_search_tree.rb'
 
 class BinarySearchTreeTest < Minitest::Test
-  # attr_reader :tree
-  # def setup
-  #   @tree = BinarySearchTree.new
-  # end
 
   def test_binary_search_tree_exists
     tree = BinarySearchTree.new
@@ -236,7 +232,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal [[20, 4, 80]], tree.health(1)
   end
 
-  meta single: true
   def test_for_health_by_spec
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -250,6 +245,36 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal [[98, 7, 100]], tree.health(0)
     assert_equal [[58, 6, 85]], tree.health(1)
     assert_equal [[36, 2, 28], [93, 3, 42]], tree.health(2)
+  end
+
+  def test_for_one_leaf
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+
+    assert_equal 1, tree.leaves
+  end
+
+  meta single: true
+  def test_for_two_leaves
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(105, "Armageddon")
+
+    assert_equal 2, tree.leaves
+  end
+
+  def test_for_three_leaves
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(44, "Armageddon")
+    tree.insert(50, "Armageddon")
+    tree.insert(105, "Armageddon")
+    tree.insert(33, "Armageddon")
+
+    assert_equal 3, tree.leaves
   end
 
 
